@@ -1,2 +1,2 @@
-# typescript-webpack-starter
- My Typescript Webpack Template 
+# typescript-starter
+ My Typescript Template 
