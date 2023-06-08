@@ -5,11 +5,13 @@ const checkWebGPUSupport = navigator.gpu ? 'Great, your current browser supports
 
 
 const getGPUInfo = async () => {
-    const div = document.querySelector('#id-result') as HTMLDivElement;
+
+    let body = document.querySelector('body') as HTMLBodyElement;
+
     try {
         if (!navigator.gpu) {
-            div.style.lineHeight = "150%";
-            div.innerHTML = checkWebGPUSupport;
+            body.style.lineHeight = "150%";
+            body.innerHTML = checkWebGPUSupport;
             throw new Error(checkWebGPUSupport);
         }
         let ss = `<p>${checkWebGPUSupport}</p>`;
@@ -32,7 +34,7 @@ const getGPUInfo = async () => {
             ss += `<p>${x}</p>`
         });
 
-        div.innerHTML = ss;
+        body.innerHTML += ss;
 
     } catch (error: any) {
         throw new Error(error);
