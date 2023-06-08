@@ -16,7 +16,11 @@ const getGPUInfo = async () => {
         }
         let ss = `<p>${checkWebGPUSupport}</p>`;
         const adapter = await navigator.gpu.requestAdapter();
-        if (!adapter) return;
+        if (!adapter) {
+            body.style.lineHeight = "150%";
+            body.innerHTML += `<p>Failed to get GPU Adapter.</p>`;
+            throw new Error('Failed to get GPU Adapter.');
+        }
         const info = await adapter.requestAdapterInfo();
 
         ss += `<br/><h3>Adapter Info:</h3>
